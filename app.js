@@ -21,6 +21,8 @@ const limiter = rateLimit({
   message: "Too many request. Try again after 1 hour !",
 });
 
+
+//Testing is the best
 const app = express();
 
 app.set("view engine", "pug");
