@@ -47,7 +47,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   next();
 });
 
-const j = (obj, ...allowedFields) => {
+const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
 
   Object.keys(obj).forEach((el) => {
