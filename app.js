@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "static")));
 
 app.use("/api", limiter);
 
-app.user(
+app.use(
   "/webhook-checkout",
   express.raw({ type: "application/json" }),
   bookingController.webhookCheckout
