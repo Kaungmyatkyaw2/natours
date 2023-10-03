@@ -14,13 +14,13 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
+const compression = require("compression");
 
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
   message: "Too many request. Try again after 1 hour !",
 });
-
 
 //Testing is the best
 const app = express();
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "static")));
 app.use("/api", limiter);
 
 app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended : true,limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -61,6 +61,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 app.use("/", viewRouter);
 app.use("/api/v1/tours", tourRouter);

@@ -6,7 +6,7 @@ dotenv.config({
 });
 
 process.on('uncaughtException', (error) => {
-  console.log(error.message, error.name);
+  (error.message, error.name);
   console.log('Uncaught Exception Alert!');
   process.exit(1);
 });

@@ -47,7 +47,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   next();
 });
 
-const filterObj = (obj, ...allowedFields) => {
+const j = (obj, ...allowedFields) => {
   const newObj = {};
 
   Object.keys(obj).forEach((el) => {
@@ -60,7 +60,6 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.file);
   // Create Error if user post password
   if (req.body.password || req.body.passwordConfirm) {
     return next(

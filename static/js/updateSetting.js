@@ -4,7 +4,7 @@ const updateSettings = async (data, type) => {
 
     const res = await axios({
       method: "PATCH",
-      url: `http://localhost:3000/api/v1/users/${route}`,
+      url: `/api/v1/users/${route}`,
       data: data,
     });
 
