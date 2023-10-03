@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "start:prod": "node --watch server",
-    "build" : "npm install",
+    "start:prod": "nodemon server.js",
+    "build": "npm install",
     "debug": "ndb server.js"
   },
   "author": "Kmk",
@@ -33,5 +33,8 @@
     "stripe": "^13.7.0",
     "validator": "^13.11.0",
     "xss-clean": "^0.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
