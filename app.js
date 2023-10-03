@@ -16,6 +16,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const compression = require("compression");
+const bookingController = require("./controllers/bookingController");
 
 const limiter = rateLimit({
   max: 100,
@@ -39,6 +40,12 @@ app.use(express.static(path.join(__dirname, "static")));
 // app.use(helmet());
 
 app.use("/api", limiter);
+
+app.user(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  bookingController.webhookCheckout
+);
 
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
