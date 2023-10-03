@@ -1,4 +1,4 @@
-const crypto = require("node:crypto");
+const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../utils/catchAsync");
