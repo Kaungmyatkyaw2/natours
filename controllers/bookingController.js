@@ -13,7 +13,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     // success_url: `${req.protocol}://${req.get("host")}/?tour=${
     //   req.params.tourId
     // }&user=${req.user._id}&price=${tour.price}`,
-    success_url: `${req.protocol}://${req.get("host")}/my-tours`,
+    success_url: `${req.protocol}://${req.get("host")}/my-tours?alert=booking`,
     cancel_url: `${req.protocol}://${req.get("host")}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
@@ -74,11 +74,7 @@ exports.webhookCheckout = catchAsync(async (req, res, next) => {
   let event;
   const signature = req.headers["stripe-signature"];
   try {
-    event = stripe.webhooks.constructEvent(
-      req.body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET
-    );
+    event = stripe.webhooks.constructEvent(req.body);
   } catch (error) {
     return res.status(400).json({
       error: `Webhook error : ${error}`,
